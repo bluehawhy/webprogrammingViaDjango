@@ -1,0 +1,151 @@
+1. web client
+ 웹 프로그램 - 클라이언트 / 서버로 구성
+ 웹 프로그래밍 - 클라이언트 및 서버를 개발
+ 클라이언트와 서버는 Http / Https 통신 규약에 따라 구성
+ 클라이언트의 종류 - 웹 브라우저, 리눅스 curl, telnet, 클라이언트 제작
+
+2. http protocol
+ 서버와 클라이언트 간의 데이터를 주고 받기 위한 통신방식
+ TCP/IP 프로토콜에서 동작
+ 클라이언트가 서버에 request를 보내면 서버는 request에 따른 response를 전달
+ 구조 - start line / Header / Blank line / Body
+ Http 처리방식 
+   - Get / Read - url의 정보를 받는 메소드
+   - Post / Create - 리소스를 생성하는 메소드
+   - Put / Update - 리소스를 업데이트 하는 메소드
+   ?? post / put 차이 - 생성 및 업데이트 된 url의 명칭을 결정하는 주체 (post - 서버 / put - 클라이언트)
+   - Delete / Delete
+   - Gead
+   - Options
+   - Trace
+   - connect
+ status code - response에 대한 상테를 제공
+  - 1xx 현재 상테애 대한 정보 제공
+  - 2xx 요청이 성공적으로 처리
+   - 200 요청에 대한 처리가 성공
+   - 201 요청에 대한 처리가 성공 및 새로운 리소스 생성
+   - 202 요청은 수락 되었으나 처리가 완료되지 않음
+  - 3xx 요청을 처리하기 위해 새로운 step이 필요할 때 
+   - 301 지정한 리소스가 새로운 위치로 변경
+   - 303 이해를 못하겠음...
+   - 307 이해를 못하겠음...
+  - 4xx 요청 내용이 잘못 된 경우 / 요쳥 내용이 오류가 있는 경우
+   - 400 요청 내용이 오류가 있다
+   - 401 해당 요청을 할 권한이 없다
+   - 403 접근이 금지되었다
+   - 404 리소스를 찾을 수 없다
+  - 5xx 서버 에러
+   - 500 서버쪽에서 에러가 발생
+   - 502 게이트 웨이가 잘못 됨
+   - 503 서비스 점검, 과부하등으로 인하여 현재 서비스를 제공 못하는 경우
+
+3. URL structure
+ UI - request에 대한 디자인적으로 제공
+ URL - 프로그램적으로 접근할 경로
+ http://www.example.com:80/service?category=2&kind=patenets#n10
+ url 스킴 - url에 사용할 프로토콜에 대해 명시
+ 호스트명 - 웹서버의 호스트명, 도메인 또는 ip
+ 포트번호 - 웹서버내 서비스 포토번호 (http - 80 / https - 443이 디폴트)
+ 경로 - 파일 or application의 경로
+ 쿼리 스트링 - 질의 문자열, & 또는 key=value로 표현
+ 프라그먼트 - 문서 내의 순서
+ url의 2가지 표현 방식
+  - RPC (Remote Procedure Call) - 서버에 있는 API함수를 call하는 방식
+  - REST (Representational State Transfer) - url을 통해 특정 리소스를 call하는 방식
+eg. 
+http://example.com/index.php?page=foo / http://example.com/foo
+http://example.com/index.php?page=consulting/marketing / http://example.com/consulting/marketing
+http://example.com/cgi-bin/feed.cgi?feed=news&fm=rss / http://example.com/news.rss
+http://example.com/index.php?mode=profiles&id=13 / http://example.com/user/john-doe
+
+
+4. web application server
+웹 서버를 구체적으로 나누면 웹 서버 / 웹 어플리케이션 서버
+웹 서버 - 웹 클라이언트의 요청을 받아 결과를 응답 
+웹 어플리케이션 서버 - 웹 서버에서 동적 페이지 요청을 받아 결과를 전달
+웹 브라우져 <-> 웹 서버 <-> 웹 어플리케이션
+static - 언제 누가 접속 하던 동일한 같은 내용을 표시하는 페이지
+dynamic - 상황에 따라 다른 데이터를 제공하는 페이지
+
+CGI - 데이터처리에 대한 요청이 많아짐에 따라 웹 서버와 웹 어플리케이션 서버로 분할, 2개의 서버 사이에서 정보를 주고 받는 규칙
+전통방식 - web 서버에서 요청이 올 때 마다 독립인 프로그램을 호출(컴파일 방식) / 많은 요청으로 인하여 overhead 발생
+웹 클라이언트 - 웹 서버 - 웹 어플리케이션 서버 -> 어플리케이션 생성
+대안기술 - 웹서버에 스크립트 엔진을 내장, 요청이 올 때마다 스크립트 실행 
+대안기술 - 어플리케이션 서버에 포로세스를 데몬으로 미리 생성 후 데몬에서 웹서버 요청을 진행
+웹 클라이언트 - 웹 서버 - 웹 어플리케이션 서버(데몬,스크립트 엔진) - 데이터베이스 서버
+JSP(java server page), ASP(active server page)
+서버간의 역할 분리
+웹 서버 - 정적페이지 제공, 캐시, 프록시, 클라이언트 접속 수 관리, 처리 프로세스 곤리, 요청&응답 로그 관리, 인증 암호화처리,
+웹 어플리케이션 서버 - 
+
+
+5. python web standard library
+웹 서버 / 웹 클라이언트에 따라 나뉨
+웹 서버 - Django, Flask, Tomado etc, (http.cookie, http.server)
+웹 클라이언트 
+- urllib
+  - urllib.parse, urllib.request, urllib.response, urllib.error, urllib.robotparse (http.client, http.cookiejar)
+    - urllib.request 
+    method
+     - urlopen
+    class
+   - Request
+     - add_header
+   - HTTPBasicAuthHandler
+   - HTTPCookieProcessor
+   - ProxyHandler
+
+- httplib
+ http 프로토콜 요청에 세밀하거나 저수준의 레벨이 필요한 경우 urllib 대신 사용
+ 규칙
+  - 연결 객체 생성 / conn = httplib.HTTPConnection(url)
+  - 요청 전달 / conn.request(Type, url)
+  - 응답 객체 생성 / response = conn.getresopnse()
+  - 응답 데이터 확인 / data = response.read()
+  - 연결 닫음 / conn.close()
+
+웹 서버 라이브러리
+ 직접적인 라이브러리 이용보다는 웹 서버 개발을 위해 프레임워크를 이용 (Django,Flask)
+ BaseHTTPServer - 기반 클래스, Do, Head 관련 메소드는 작성해야 함
+ SimpleHTTPServer - GET,HEAD 메소드 처리
+ CGIHTTPServer - POST, CGI 처리 기능
+
+ HTTPServer module 관계도
+  TCP level
+ BaseRquestHandler <- StreamRequestHandler <-
+  HTTP level
+ - BaseHTTPRequestHandler <- SimpleHTTPRequestHandler <- CGIHTTPRequestHandler
+
+ 
+6. CGI/WSGI library
+  Django나 HTTPlib들은 웹서버에 정보를 제공하기 위한 application
+  WSGI 규격에 맞게 맞춰 웹서버 (Apachi, Nginx)와 연동해야 함
+  CGI / WSGI의 차이
+  CGI - 요청이 올 때마다 처리를 위한 프로세스를 실행
+  WSGI - 웹 어플리케이션을 하나만 실행 후 요청에 따른 응답 실행
+  WSGI 의 규격
+    웹 서버-> Request URL 분석,  WSGI에 처리 위임 
+    WSGI 서버 -> WSGI에 정의된 파일 실행, application 함수 호출
+    application -> 환경변수 처리, 뷰 처리, HTTPrequest 객체 생성, 함수 호출, 결과값 리턴
+    WSGI 서버 -> 출력 결과 전달
+    웹 서버 -> response
+ 
+
+7. Django web framework
+  장고 프래임워크 특징
+    MVC(Model-View-controller) 패턴 기반 MTV(Model-Template-View)
+    객체 관계 매핑 - 데이터베이스 시스템과 데이터 모델을 연결
+    관리자 구성
+    URL 설계의 편리함
+    자체 템플릿 시스템
+    캐시 시스템
+    소스 변경사항 자동 반영
+
+ - install
+ - MTV pattern
+  - Model
+  - Template
+  - URLconf
+  - View
+
+8. Create application

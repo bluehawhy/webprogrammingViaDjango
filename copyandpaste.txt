@@ -1,0 +1,15 @@
+urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)
+urllib.request.install_opener(opener)
+urllib.request.build_opener([handler, ...])
+urllib.request.pathname2url(path)
+urllib.request.url2pathname(path)
+urllib.request.getproxies()
+
+class urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)
+class urllib.request.OpenerDirector
+class urllib.request.BaseHandler
+
+class urllib.request.HTTPDefaultErrorHandler
+class urllib.request.HTTPRedirectHandler
+class urllib.request.HTTPCookieProcessor(cookiejar=None)
+class urllib.request.ProxyHandler(proxies=None)
