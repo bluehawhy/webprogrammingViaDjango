@@ -1,0 +1,2 @@
+# webprogrammingViaDjango
+webprogrammingViaDjango test page
